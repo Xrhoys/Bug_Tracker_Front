@@ -1,58 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from 'react'
+import './App.css'
+import NavLink from './features/NavLink/NavLink'
+import Dashboard from './assets/svg/dashboard'
+import Chat from './assets/svg/chat_left'
+import Collection from './assets/svg/collection'
+import CPU from './assets/svg/cpu_fill'
+import Gear from './assets/svg/gear'
+import Person from './assets/svg/person'
+import NavBanner from './features/NavBanner/NavBanner'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div>
+      <NavBanner />
+      <NavLink
+        text="Dashboard"
+        icon={Dashboard}
+        onClick={() => alert('CLICKED')}
+      />
+      <NavLink text="Issues" icon={CPU} onClick={() => alert('CLICKED')} />
+      <NavLink
+        text="Projects"
+        icon={Collection}
+        onClick={() => alert('CLICKED')}
+        selected
+      />
+      <NavLink text="Profile" icon={Person} onClick={() => alert('CLICKED')} />
+      <NavLink text="Message" icon={Chat} onClick={() => alert('CLICKED')} />
+      <NavLink text="Settings" icon={Gear} onClick={() => alert('CLICKED')} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
