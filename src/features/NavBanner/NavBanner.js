@@ -5,6 +5,9 @@ import styles from './NavBanner.module.css'
 import ChevronDown from './../../assets/svg/chevron_down'
 
 const CHEVRON_COLOR = '#5E81F4'
+const CHEVRON_WIDTH = '14px'
+const CHEVRON_HEIGHT = 'auto'
+const CHEVRON_STROKE = '2px'
 
 export default function NavBanner(props) {
   const currentProject = useSelector(selectCurrentProject)
@@ -22,9 +25,9 @@ export default function NavBanner(props) {
         <p className={['no-select', styles.title].join(' ')}>{title}</p>
         <ChevronDown
           fill={CHEVRON_COLOR}
-          width="14px"
-          height="auto"
-          strokeWidth="2px"
+          width={CHEVRON_WIDTH}
+          height={CHEVRON_HEIGHT}
+          strokeWidth={CHEVRON_STROKE}
         />
       </div>
     </div>
