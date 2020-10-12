@@ -1,0 +1,7 @@
+.container {
+}
+
+.triggerContainer {
+  display: flex;
+  flex-direction: row;
+}
