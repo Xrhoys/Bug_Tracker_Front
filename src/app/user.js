@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const defaultUser = {
+  name: 'Default',
+}
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    users: new Map(),
+    users: [],
     current: null,
   },
   reducers: {
@@ -37,7 +41,8 @@ export const addToContact = (uid) => async (dispatch) => {
 }
 
 export const selectCurrentUser = (state) =>
-  state.user.users.get(state.user.current)
+  defaultUser ?? state.user.users.get(state.user.current)
+
 export const selectUserByID = (state, id) => state.user.users.get(id)
 
 export default userSlice.reducer

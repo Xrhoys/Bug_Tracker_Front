@@ -1,9 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const defaultProject = {
+  title: 'Default',
+  logoURL:
+    'https://moonlamarque.fr/wp-content/uploads/2017/06/shopkeeper-logo.png',
+}
 export const projectSlice = createSlice({
   name: 'project',
   initialState: {
-    list: new Map(),
+    list: [],
     current: '',
   },
   reducers: {
@@ -44,7 +49,7 @@ export const removeProject = (project) => async (dispatch) => {
 export const selectProjectList = (state) => state.project.list
 export const selectProject = (state, id) => state.project.list.get(id)
 export const selectCurrentProject = (state) =>
-  state.project.list.get(state.current)
+  defaultProject ?? state.project.list.get(state.current)
 export const selectCurrentProjectID = (state) => state.project.current
 
 export default projectSlice.reducer
