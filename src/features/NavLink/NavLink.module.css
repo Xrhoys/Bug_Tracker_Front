@@ -1,12 +1,14 @@
 .title {
-  font-size: 14px;
+  font-size: 16px;
   color: #8da1b5;
+  padding-left: 10px;
 }
 
 .titleSelected {
   font-weight: bold;
   font-size: 16px;
   color: #fff;
+  padding-left: 10px;
 }
 
 .container {
@@ -15,5 +17,5 @@
   align-items: center;
   height: 48px;
   width: 100%;
-  padding-left: 14px;
+  padding-left: 25px;
 }
