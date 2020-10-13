@@ -5,3 +5,18 @@
   display: flex;
   flex-direction: row;
 }
+
+.dropdownTrigger {
+  background-color: initial;
+  border: none;
+  border-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.chevron {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 5px;
+}

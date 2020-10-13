@@ -1,0 +1,6 @@
+export const DASHBOARD = 'dashboard'
+export const PROJECTS = 'projects'
+export const ISSUES = 'issues'
+export const PROFILE = 'profile'
+export const SETTING = 'setting'
+export const MESSAGE = 'message'
