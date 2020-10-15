@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './signin.module.css'
 import Bug from './../assets/svg/bug'
-import { Link } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const BUG_COLOR = '#5E81F4'
 const BUG_WIDTH = '60px'
@@ -21,28 +21,39 @@ export default function SignIn(props) {
     <div className={styles.container}>
       <div className={styles.windowContainer}>
         <div className={styles.topPart}>
-          <Bug fill={BUG_COLOR} width={BUG_WIDTH} height={BUG_HEIGHT} />
-          <h1>Bug Tracker</h1>
+          <Bug
+            fill={BUG_COLOR}
+            width={BUG_WIDTH}
+            height={BUG_HEIGHT}
+            className={styles.bug}
+          />
+          <h1 className={styles.bugTracker}>Bug Tracker</h1>
         </div>
         <div>
-          <form className={styles.inputsPart} onSubmit={}>
+          <form className={styles.inputsPart} onSubmit={onSubmit}>
             <input
               type="text"
               className={styles.text}
               onChange={onChangeUsername}
               value={username}
+              placeholder="Username"
             />
             <input
               type="password"
               className={styles.text}
               onChange={onChangePassword}
               value={password}
+              placeholder="Password"
             />
-            <input className={styles.submitButton} value={SUBMIT} />
+            <input
+              type="submit"
+              className={styles.submitButton}
+              value={SUBMIT}
+            />
           </form>
           <p className={styles.signUp}>
-            Get involved!
-            <Link>
+            Get involved! {'\t'}
+            <Link to="/signup">
               <u>Sign Up</u>
             </Link>
           </p>
