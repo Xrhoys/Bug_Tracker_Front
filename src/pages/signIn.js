@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styles from './signin.module.css'
 import Bug from './../assets/svg/bug'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { signIn } from '../app/user'
 
 const BUG_COLOR = '#5E81F4'
 const BUG_WIDTH = '60px'
@@ -9,13 +11,18 @@ const BUG_HEIGHT = 'auto'
 const SUBMIT = 'Sign In'
 
 export default function SignIn(props) {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
 
-  const onChangeUsername = (event) => setUsername(event.target.value)
+  const onChangeEmail = (event) => setEmail(event.target.value)
   const onChangePassword = (event) => setPassword(event.target.value)
 
-  const onSubmit = (event) => {}
+  const onSubmit = (event) => {
+    // TODO: input verification with UserObject
+    event.preventDefault()
+    dispatch(signIn(email, password))
+  }
 
   return (
     <div className={styles.container}>
@@ -34,9 +41,9 @@ export default function SignIn(props) {
             <input
               type="text"
               className={styles.text}
-              onChange={onChangeUsername}
-              value={username}
-              placeholder="Username"
+              onChange={onChangeEmail}
+              value={email}
+              placeholder="Email"
             />
             <input
               type="password"
@@ -57,7 +64,7 @@ export default function SignIn(props) {
               <u>Sign Up</u>
             </Link>
           </p>
-          <Link>
+          <Link to="/forgetPassword">
             <p className={styles.forgotPassword}>Forgot Password?</p>
           </Link>
         </div>

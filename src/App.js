@@ -5,8 +5,14 @@ import SignIn from './pages/signIn'
 import SignUp from './pages/signUp'
 import Home from './pages/home'
 import Main from './pages/main'
+import stores from './app/store'
+import { autoConnect } from './app/user'
+import firebase, { auth } from './app/firebase'
+
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
 function App() {
+  stores.dispatch(autoConnect())
   return (
     <Router>
       <div className="App">

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { signUp } from '../app/user'
 import styles from './signin.module.css'
 
 const SUBMIT = 'Submit'
@@ -8,13 +10,18 @@ export default function SignUp(props) {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [check, setCheck] = useState(false)
+  const dispatch = useDispatch()
 
   const onChangeUsername = (event) => setUsername(event.target.value)
   const onChangePassword = (event) => setPassword(event.target.value)
   const onChangeEmail = (event) => setEmail(event.target.value)
   const onChangeCheck = (event) => setCheck(event.target.checked)
 
-  const onSubmit = (event) => {}
+  const onSubmit = (event) => {
+    // TODO: input verficiation with UserObject
+    event.preventDefault()
+    dispatch(signUp(username, email, password))
+  }
 
   const titleStyle = {
     fontSize: 28,
@@ -31,16 +38,16 @@ export default function SignUp(props) {
               <input
                 type="text"
                 className={styles.text}
-                onChange={onChangeEmail}
-                value={email}
-                placeholder="Email"
+                onChange={onChangeUsername}
+                value={username}
+                placeholder="Username"
               />
               <input
                 type="text"
                 className={styles.text}
-                onChange={onChangeUsername}
-                value={username}
-                placeholder="Username"
+                onChange={onChangeEmail}
+                value={email}
+                placeholder="Email"
               />
               <input
                 type="password"
