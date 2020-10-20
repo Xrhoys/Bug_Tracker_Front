@@ -78,7 +78,7 @@ export const signIn = (email, password) => async (dispatch) => {
  * @async
  * @description Call firebase auth create user with email and password method to signup a new user
  */
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (displayName, email, password) => async (dispatch) => {
   // TODO: Replace with backend createUser instead
   await auth.createUserWithEmailAndPassword(email, password)
 }

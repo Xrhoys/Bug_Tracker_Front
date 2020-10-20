@@ -50,6 +50,5 @@ export const selectProjectList = (state) => state.project.list
 export const selectProject = (state, id) => state.project.list.get(id)
 export const selectCurrentProject = (state) =>
   defaultProject ?? state.project.list.get(state.current)
-export const selectCurrentProjectID = (state) => state.project.current
 
 export default projectSlice.reducer
