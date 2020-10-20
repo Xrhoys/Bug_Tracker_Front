@@ -7,12 +7,13 @@ import Home from './pages/home'
 import Main from './pages/main'
 import stores from './app/store'
 import { autoConnect } from './app/user'
-import firebase, { auth } from './app/firebase'
 
-auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+/**
+ * Call init store steps, for now only autoConnect
+ */
+stores.dispatch(autoConnect())
 
 function App() {
-  stores.dispatch(autoConnect())
   return (
     <Router>
       <div className="App">
@@ -23,7 +24,7 @@ function App() {
           <Route exact path="/signup">
             <SignUp />
           </Route>
-          <Route path="/main">
+          <Route exact path="/main">
             <Main />
           </Route>
           <Route path="/">

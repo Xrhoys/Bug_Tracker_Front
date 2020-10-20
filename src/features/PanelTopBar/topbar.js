@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './topbar.module.css'
-import { useSelector } from 'react-redux'
-import { selectCurrentUser } from './../../app/user'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, selectCurrentUser } from './../../app/user'
 import Dropdown from './../Dropdown/dropdown'
 import { Dropdown as Drop } from 'react-bootstrap'
 import { selectCurrentContainer } from '../../app/containerController'
@@ -9,8 +9,11 @@ import { selectCurrentContainer } from '../../app/containerController'
 export default function Topbar(props) {
   const user = useSelector(selectCurrentUser)
   const pathname = useSelector(selectCurrentContainer)
+  const dispatch = useDispatch()
 
-  const trigger = <p className={styles.username}>{user.name}</p>
+  const trigger = <p className={styles.username}>{user?.username}</p>
+
+  const onLogout = () => dispatch(logout())
 
   return (
     <div className={styles.container}>
@@ -20,7 +23,10 @@ export default function Topbar(props) {
         </h1>
         <Dropdown trigger={trigger}>
           <Drop.Menu className={styles.dropdownMenu}>
-            <Drop.Item className={styles.dropdownItem}> LOGOUT </Drop.Item>
+            <Drop.Item className={styles.dropdownItem} onClick={onLogout}>
+              {' '}
+              LOGOUT{' '}
+            </Drop.Item>
           </Drop.Menu>
         </Dropdown>
       </div>

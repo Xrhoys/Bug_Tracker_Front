@@ -1,11 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { auth } from './firebase'
+import firebase, { auth } from './firebase'
 import { addContact, addNewUser, initUser } from './db/user'
-import User from './utils/object/user'
-
-const defaultUser = {
-  name: 'Default',
-}
 
 /**
  * @description user redux slice instantiated with createSlice()
@@ -20,20 +15,23 @@ export const userSlice = createSlice({
   reducers: {
     setCurrent: (state, action) => {
       const { uid } = action.payload
-      state.users.filter((element) => element?.uid === uid) &&
+      state.users.findIndex((element) => element?.uid === uid) &&
         (state.current = uid)
     },
-    logout: (state) => {
+    setCurrentNull: (state) => {
       state.current = null
+      state.users = []
     },
     addUser: (state, action) => {
       const { user } = action.payload
-      state.users.push(user)
+      if (!state.users.find((element) => element.uid === user.uid)) {
+        state.users.push(user)
+      }
     },
   },
 })
 
-export const { setCurrent, logout, addUser } = userSlice.actions
+export const { setCurrent, setCurrentNull, addUser } = userSlice.actions
 
 /**
  * @function init
@@ -47,15 +45,8 @@ export const init = (uid) => async (dispatch) => {
 }
 
 export const autoConnect = () => async (dispatch) => {
-  auth.onAuthStateChanged(async (user) => {
+  await auth.onAuthStateChanged(async (user) => {
     if (user) {
-      const userData = await initUser(user.uid)
-      const newUser = {
-        uid: user.uid,
-        email: userData.email,
-        username: userData.username,
-      }
-      dispatch(addUser({ user: newUser }))
       dispatch(setCurrent({ uid: user.uid }))
     }
   })
@@ -68,10 +59,12 @@ export const autoConnect = () => async (dispatch) => {
  * @description Call firebase auth signin methods to obtain user token
  */
 export const signIn = (email, password) => async (dispatch) => {
+  await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
   const snapshot = await auth.signInWithEmailAndPassword(email, password)
   const user = {
     uid: snapshot.user.uid,
     email: snapshot.user.email,
+    username: snapshot.user.displayName,
   }
   dispatch(addUser({ user }))
   dispatch(setCurrent({ uid: snapshot.user.uid }))
@@ -86,11 +79,8 @@ export const signIn = (email, password) => async (dispatch) => {
  * @description Call firebase auth create user with email and password method to signup a new user
  */
 export const signUp = (username, email, password) => async (dispatch) => {
-  const snapshot = await auth.createUserWithEmailAndPassword(email, password)
-  await addNewUser({
-    user: snapshot.user,
-    username,
-  })
+  // TODO: Replace with backend createUser instead
+  await auth.createUserWithEmailAndPassword(email, password)
 }
 
 /**
@@ -105,12 +95,22 @@ export const addToContact = (uid) => async (dispatch) => {
 }
 
 /**
+ * @function logout
+ * @async
+ * @description logging from firebase auth
+ */
+export const logout = () => async (dispatch) => {
+  await auth.signOut()
+  dispatch(setCurrentNull())
+}
+
+/**
  * @function selectCurrentUser
  * @param {object} state
  * @description redux selector hook to retrieve the current user instance
  */
 export const selectCurrentUser = (state) =>
-  defaultUser ?? state.user.users.get(state.user.current)
+  state.user.users.find((element) => element.uid === state.user.current)
 
 /**
  * @function selectUserByID
@@ -119,6 +119,6 @@ export const selectCurrentUser = (state) =>
  * @description redux selector hook to retrieve specific user from users array
  */
 export const selectUserByID = (state, uid) =>
-  state.user.users.filter((element) => (element.uid = uid))
+  state.user.users.find((element) => (element.uid = uid))
 
 export default userSlice.reducer

@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './signin.module.css'
 import Bug from './../assets/svg/bug'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { signIn } from '../app/user'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectCurrentUser, signIn } from '../app/user'
 
 const BUG_COLOR = '#5E81F4'
 const BUG_WIDTH = '60px'
@@ -14,15 +14,26 @@ export default function SignIn(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
+  const user = useSelector(selectCurrentUser)
+  const history = useHistory()
 
   const onChangeEmail = (event) => setEmail(event.target.value)
   const onChangePassword = (event) => setPassword(event.target.value)
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     // TODO: input verification with UserObject
     event.preventDefault()
-    dispatch(signIn(email, password))
+    await dispatch(signIn(email, password))
   }
+
+  /**
+   * Redirects to main
+   */
+  useEffect(() => {
+    if (user?.uid) {
+      history.push('/main')
+    }
+  }, [user])
 
   return (
     <div className={styles.container}>
