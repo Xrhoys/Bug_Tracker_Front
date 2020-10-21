@@ -8,7 +8,32 @@ const defaultProject = {
 export const projectSlice = createSlice({
   name: 'project',
   initialState: {
-    list: [],
+    list: [
+      {
+        id: '1',
+        name: 'Default project',
+      },
+      {
+        id: '1',
+        name: 'Default project',
+      },
+      {
+        id: '1',
+        name: 'Default project',
+      },
+      {
+        id: '1',
+        name: 'Default project',
+      },
+      {
+        id: '1',
+        name: 'Default project',
+      },
+      {
+        id: '1',
+        name: 'Default project',
+      },
+    ],
     current: '',
   },
   reducers: {

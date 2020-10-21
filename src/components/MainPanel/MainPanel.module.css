@@ -1,5 +1,9 @@
 .container {
-  height: auto;
+  height: 100%;
   width: 100%;
   background-color: #f5f5fb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
