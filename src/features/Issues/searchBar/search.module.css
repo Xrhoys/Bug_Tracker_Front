@@ -1,0 +1,14 @@
+.container {
+  height: 50px;
+  width: 385px;
+  display: flex;
+  flex-direction: row;
+  padding-top: 11px;
+  padding-bottom: 13px;
+  align-items: center;
+}
+
+.input {
+  flex-grow: 1;
+  font-size: 20px;
+}
