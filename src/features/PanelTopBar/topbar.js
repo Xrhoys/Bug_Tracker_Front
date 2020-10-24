@@ -18,14 +18,13 @@ export default function Topbar(props) {
   return (
     <div className={styles.container}>
       <div className={styles.contentContainer}>
-        <h1 className={[styles.title, 'no-select'].join(' ')}>
+        <h1 className={[styles.topBarTitle, 'no-select'].join(' ')}>
           {pathname.toUpperCase()}
         </h1>
         <Dropdown trigger={trigger}>
           <Drop.Menu className={styles.dropdownMenu}>
             <Drop.Item className={styles.dropdownItem} onClick={onLogout}>
-              {' '}
-              LOGOUT{' '}
+              LOGOUT
             </Drop.Item>
           </Drop.Menu>
         </Dropdown>

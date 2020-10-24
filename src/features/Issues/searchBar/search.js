@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import styles from './search.module.css'
 import SearchIcon from './../../../assets/svg/search'
 
-const ICON_WIDTH = '20px'
-const ICON_HEIGHT = 'auto'
+const ICON_WIDTH = '16px'
+const ICON_HEIGHT = '16px'
 const ICON_FILL = '#C6C6C6'
 
 export default function Search(props) {
   const [input, setInput] = useState('')
-  const onChange = (event) => setInput(event.current.value)
+  const onChange = (event) => setInput(event.target.value)
   //TODO: Search completion redux function
   const onSubmit = (event) => console.log('Submited')
   return (

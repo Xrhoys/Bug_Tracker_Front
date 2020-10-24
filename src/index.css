@@ -17,7 +17,6 @@ code {
 }
 
 .no-select {
-  margin-left: 10px;
   -webkit-touch-callout: none; /* IOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */

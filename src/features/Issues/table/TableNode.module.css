@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  height: fit-content;
+}
+
+.title {
+  color: #5e81f4;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.fileName {
+  color: #8294ce;
+  font-size: 18px;
+  padding-left: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.content {
+  font-size: 18px;
+  color: #455a64;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.timestamps {
+  font-size: 14px;
+  color: #949494;
+  margin-top: 0px;
+  margin-bottom: 0;
+}
+
+.checkbox {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+.flag {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 10px;
+}

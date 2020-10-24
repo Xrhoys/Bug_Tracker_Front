@@ -11,7 +11,7 @@ export default function ProjectCard(props) {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.flag} />
-        <h1 className={styles.title}>{project.name}</h1>
+        <h1 className={styles.title}>{project.title}</h1>
       </div>
       <div className={styles.bottom} />
     </div>

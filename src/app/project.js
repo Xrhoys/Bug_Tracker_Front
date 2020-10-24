@@ -11,30 +11,82 @@ export const projectSlice = createSlice({
     list: [
       {
         id: '1',
-        name: 'Default project',
+        title: 'Default project',
+        issues: [
+          {
+            title: 'example title',
+            content: 'something went wrong and it is your fault',
+            fileName: 'file.js',
+            timestamps: 'right now',
+            occurence: 60,
+            flag: 'CRITICAL',
+          },
+          {
+            title: 'example title',
+            content: 'something went wrong and it is your fault',
+            fileName: 'file.js',
+            timestamps: 'right now',
+            occurence: 60,
+          },
+          {
+            title: 'example title',
+            content: 'something went wrong and it is your fault',
+            fileName: 'file.js',
+            timestamps: 'right now',
+            occurence: 60,
+          },
+          {
+            title: 'example title',
+            content: 'something went wrong and it is your fault',
+            fileName: 'file.js',
+            timestamps: 'right now',
+            occurence: 60,
+          },
+          {
+            title: 'example title',
+            content: 'something went wrong and it is your fault',
+            fileName: 'file.js',
+            timestamps: 'right now',
+            occurence: 60,
+          },
+          {
+            title: 'example title',
+            content: 'something went wrong and it is your fault',
+            fileName: 'file.js',
+            timestamps: 'right now',
+            occurence: 60,
+          },
+          {
+            title: 'example title',
+            content: 'something went wrong and it is your fault',
+            fileName: 'file.js',
+            timestamps: 'right now',
+            occurence: 60,
+          },
+        ],
       },
       {
         id: '2',
-        name: 'Default project',
+        title: 'Default project',
       },
       {
         id: '3',
-        name: 'Default project',
+        title: 'Default project',
       },
       {
         id: '4',
-        name: 'Default project',
+        title: 'Default project',
       },
       {
         id: '5',
-        name: 'Default project',
+        title: 'Default project',
       },
       {
         id: '6',
-        name: 'Default project',
+        title: 'Default project',
       },
     ],
-    current: '',
+    current: '1',
   },
   reducers: {
     add: (state, action) => {
@@ -74,6 +126,6 @@ export const removeProject = (project) => async (dispatch) => {
 export const selectProjectList = (state) => state.project.list
 export const selectProject = (state, id) => state.project.list.get(id)
 export const selectCurrentProject = (state) =>
-  defaultProject ?? state.project.list.get(state.current)
+  state.project.list.find((element) => element.id === state.project.current)
 
 export default projectSlice.reducer

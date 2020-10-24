@@ -2,3 +2,9 @@
   display: flex;
   flex-direction: row;
 }
+
+.issueTitle {
+  font-size: 26px;
+  color: #4d4d4d;
+  font-weight: 400;
+}

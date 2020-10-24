@@ -8,12 +8,14 @@ export default function Title(props) {
     state.project.list.find((element) => element.id === pid)
   )?.issues
 
-  const unresolvedIssues = projectIssues.filter(
+  const unresolvedIssues = projectIssues?.filter(
     (element) => element.status === 'unresolved'
   )
   return (
     <div className={styles.container}>
-      <h1>Unsolved Issues ({unresolvedIssues.length})</h1>
+      <h1 className={styles.issueTitle}>
+        Unsolved Issues ({unresolvedIssues?.length})
+      </h1>
     </div>
   )
 }

@@ -1,14 +1,23 @@
 .container {
-  height: 50px;
-  width: 385px;
+  width: 250px;
   display: flex;
   flex-direction: row;
-  padding-top: 11px;
-  padding-bottom: 13px;
   align-items: center;
+  border: 1px solid #c6c6c6;
+  height: 36px;
+  background-color: white;
+  border-radius: 3px;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .input {
   flex-grow: 1;
-  font-size: 20px;
+  font-size: 18px;
+  border: none;
+  min-width: 0px;
+  margin-left: 10px;
+  color: #3f3f3f;
+  font-family: Nunito;
 }

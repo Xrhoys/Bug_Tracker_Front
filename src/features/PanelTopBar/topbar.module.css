@@ -15,9 +15,11 @@
   height: 60px;
 }
 
-.title {
+.topBarTitle {
   font-weight: 600;
   font-size: 28px;
+  letter-spacing: 0.06em;
+  color: #4d4d4d;
 }
 
 .username {
